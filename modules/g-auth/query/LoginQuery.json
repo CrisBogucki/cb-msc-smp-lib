@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoginQuery",
+  "description": "User authentication model",
+  "type": "object",
+  "properties": {
+    "Login": {
+      "type": "string",
+      "description": "User login",
+      "minLength": 10,
+      "maxLength": 50,
+      "required": true
+    },
+    "Password": {
+      "type": "string",
+      "description": "User password",
+      "minLength": 10,
+      "maxLength": 50,
+      "required": true
+    }
+  }
+}
