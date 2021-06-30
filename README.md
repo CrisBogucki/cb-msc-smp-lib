@@ -1,4 +1,4 @@
-# Microservice Single Message Patterns Library
+# cb-msc-smp-lib
 Microservice Single Message Patterns Library as json schema using by quicktype
 
 ![quicktype](https://raw.githubusercontent.com/quicktype/quicktype/master/quicktype-logo.svg)
