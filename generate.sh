@@ -88,7 +88,6 @@ if [ module != "" ] & [ type != "" ]; then
       done
     fi
 
-    exit 1
     PRINT_HELP
 
   fi
