@@ -30,9 +30,6 @@ Synopsis
 '
 }
 
-
-
-
 if [ $# -eq 0 ]; then
   echo "No required arguments"
 else
@@ -51,7 +48,7 @@ else
     fi
 
 if [ module != "" ] & [ type != "" ]; then
-      clear
+
       PRINT_BANNER
       echo " Generates message models of the type [$type] for the module [$module]... wait"
       for f in $(find ./modules/$module/ -name '*.json'); do
@@ -61,9 +58,7 @@ if [ module != "" ] & [ type != "" ]; then
         modulecc=`echo $module | sed -E 's/[ _-]([a-z])/\U\1/gi;s/^([A-Z])/\l\1/'`
         
         mkdir -p ./../../src/Types/$modulecc/$layername
-      
-        
-        
+    
         echo " Generate models $module/$layername/$filename.$type ..."     
         
         if [ $type = "cs" ]; then
