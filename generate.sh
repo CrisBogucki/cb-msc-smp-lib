@@ -51,11 +51,16 @@ if [ module != "" ] & [ type != "" ]; then
 
       PRINT_BANNER
       echo " Generates message models of the type [$type] for the module [$module]... wait"
+      
+      rm -rf ./../../src/Types
+      
       for f in $(find ./modules/$module/ -name '*.json'); do
         
         filename=`basename "${f%%.json}"`
         layername=`basename "${f%%$filename.json}"`
         modulecc=`echo $module | sed -E 's/[ _-]([a-z])/\U\1/gi;s/^([A-Z])/\l\1/'`
+        
+        
         
         mkdir -p ./../../src/Types/$modulecc/$layername
     
