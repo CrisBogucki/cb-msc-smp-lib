@@ -52,7 +52,7 @@ if [ module != "" ] & [ type != "" ]; then
       PRINT_BANNER
       echo " Generates message models of the type [$type] for the module [$module]... wait"
       
-      rm -rf ./../../src/Types
+      rm -rf ./../../src/Messages
       
       for f in $(find ./modules/$module/ -name '*.json'); do
         
@@ -62,21 +62,21 @@ if [ module != "" ] & [ type != "" ]; then
         
         
         
-        mkdir -p ./../../src/Types/$modulecc/$layername
+        mkdir -p ./../../src/Messages/$modulecc/$layername
     
         echo " Generate models $module/$layername/$filename.$type ..."     
         
         if [ $type = "cs" ]; then
-          quicktype -s schema "$f" -o "./../../src/Types/$modulecc/$layername/$filename.$type" --namespace "Types.$modulecc" --features just-types-and-namespace --base-class EntityData;  
+          quicktype -s schema "$f" -o "./../../src/Messages/$modulecc/$layername/$filename.$type" --namespace "Messages.$modulecc" --features just-types-and-namespace --base-class EntityData;  
           
           case $layername in
 
             dto)
-              sed -i 's/EntityData/TResponse/' ./../../src/Types/$modulecc/$layername/$filename.$type
+              sed -i 's/EntityData/TResponse/' ./../../src/Messages/$modulecc/$layername/$filename.$type
               ;;
           
             query | command)
-              sed -i 's/EntityData/TRequest/' ./../../src/Types/$modulecc/$layername/$filename.$type
+              sed -i 's/EntityData/TRequest/' ./../../src/Messages/$modulecc/$layername/$filename.$type
               ;;
           
           esac
@@ -84,7 +84,7 @@ if [ module != "" ] & [ type != "" ]; then
         fi 
         
         if [ $type = "ts" ]; then
-          quicktype -s schema $f -o ./../../src/Types/$modulecc/$layername/$filename.$type --just-types
+          quicktype -s schema $f -o ./../../src/Messages/$modulecc/$layername/$filename.$type --just-types
         fi
         
         echo " Generate models $module/$layername/$filename.$type ... done"
